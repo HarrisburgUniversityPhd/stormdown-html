@@ -1,0 +1,14 @@
+---
+title: References
+editor_options: 
+  chunk_output_type: console
+---
+
+# References {-}
+
+<div id="refs"></div>
+
+---
+nocite: | 
+  @stormdown2020
+---

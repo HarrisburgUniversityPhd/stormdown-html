@@ -1,0 +1,39 @@
+---
+title: Publications
+editor_options:
+  chunk_output_type: console
+---
+
+```{r include = F}
+here::i_am('dissertation/publications.Rmd')
+library(here)
+top_level_knit = F
+```
+
+# My 1st Publication {#pub1}
+
+Originally titled: My 1st Publication
+
+by My Name, My co-authors
+
+```{r child = here('publications/pub1/index.Rmd')}
+```
+
+# My 2nd Publication {#pub2}
+
+Originally titled: My 2nd Publication
+
+by My Name, My co-authors
+
+```{r child = here('publications/pub2/index.Rmd')}
+```
+
+# My 3rd Publication {#pub3}
+
+Originally titled: My 3rd Publication
+
+by My Name, My co-authors
+
+```{r child = here('publications/pub3/index.Rmd')}
+```
+

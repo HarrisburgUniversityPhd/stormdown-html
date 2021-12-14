@@ -1,0 +1,92 @@
+---
+title: My Dissertation Title
+subtitle: My Subtitle
+author: My Name
+date:
+  month: "`r format(Sys.Date(), '%B')`"
+  year: "`r format(Sys.Date(), '%Y')`"
+department: Analytics
+degree: Doctor of Philosophy
+university: Harrisburg University of Science and Technology
+committee:
+  - name: Chair's Name
+    title: Ph.D.
+    position: Chair
+  - name: Comity member 1
+    title: Ph.D.
+  - name: Comity member 2
+    title: Ph.D.
+  - name: Comity member 3
+    title: Ph.D.
+  - name: Comity member 4
+    title: Ph.D.
+acceptance:
+  - name: Chair's Name
+    title: Ph.D.
+    position: Chair, Graduate Committe
+  - name: W. Randolph Ford
+    title: Ph.D.
+    position: Department of Analytics
+  - name: Bilita Mattes
+    title: D.Ed.
+    position: Provost
+abstract: |
+  `r paste(readLines('dissertation/abstract.Rmd'), collapse = '\n  ')`
+dedication: |
+  `r paste(readLines('dissertation/dedication.Rmd'), collapse = '\n  ')`
+acknowledgements: |
+  `r paste(readLines('dissertation/acknowledgements.Rmd'), collapse = '\n  ')`
+bibliography:
+  - dissertation/references.bib
+  - publications/pub1/paper/references.bib
+  - publications/pub2/paper/references.bib
+  - publications/pub3/paper/references.bib
+toc-depth: 2
+lof: true
+lot: true
+output:
+  pagedown::html_paged: 
+    toc: true
+    number_sections: true
+    pandoc_args: --mathjax
+    self_contained: true
+    template: templates/thesis.html
+    css:
+      - templates/default-page.css
+      - templates/default.css
+      - templates/crc.css
+      - templates/thesis-fonts.css
+      - templates/thesis.css
+link-citations: true
+links-to-footnotes: true
+paged-footnotes: true
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa-6th-edition.csl
+url: 'https\://github.com/HarrisburgUniversityPhd/stormdown-lite'
+github-repo: HarrisburgUniversityPhd/stormdown-lite
+editor_options:
+  chunk_output_type: console
+---
+
+```{r include = F}
+here::i_am('index.Rmd')
+library(here)
+
+source(here('scripts/install_packages.R'))
+```
+
+```{r child = here('dissertation/introduction.Rmd')}
+```
+```{r child = here('dissertation/general-overview.Rmd')}
+```
+```{r child = here('dissertation/research-umbrella.Rmd')}
+```
+```{r child = here('dissertation/prior-art.Rmd')}
+```
+```{r child = here('dissertation/publications.Rmd')}
+```
+```{r child = here('dissertation/conclusion.Rmd')}
+```
+```{r child = here('dissertation/references.Rmd')}
+```
+```{r child = here('dissertation/appendices.Rmd')}
+```

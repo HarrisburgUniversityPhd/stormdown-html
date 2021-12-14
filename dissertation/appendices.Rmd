@@ -1,0 +1,15 @@
+---
+title: Appendices
+editor_options: 
+  chunk_output_type: console
+---
+
+# (APPENDIX) Appendices {-}
+
+# The First Appendix
+
+This is a test.
+
+# The Second Appendix
+
+Of the emergency broadcast system.

@@ -1,0 +1,42 @@
+---
+title: My 1st Publication
+author:
+  - My name here
+  - My co-authors
+bibliography:
+  - paper/references.bib
+output:
+  pagedown::html_paged:
+    toc: false
+    number_sections: false
+    pandoc_args: --mathjax
+    self_contained: true
+link-citations: true
+links-to-footnotes: true
+paged-footnotes: true
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ieee-with-url.csl
+editor_options:
+  chunk_output_type: console
+---
+
+```{r include = F}
+here::i_am('publications/pub1/index.Rmd')
+library(here)
+
+if(!('top_level_knit' %in% ls())) { top_level_knit = T }
+```
+
+```{r child = here('publications/pub1/paper/abstract.Rmd')}
+```
+```{r child = here('publications/pub1/paper/introduction.Rmd')}
+```
+```{r child = here('publications/pub1/paper/literature-review.Rmd')}
+```
+```{r child = here('publications/pub1/paper/method-and-materials.Rmd')}
+```
+```{r child = here('publications/pub1/paper/results.Rmd')}
+```
+```{r child = here('publications/pub1/paper/conclusion.Rmd')}
+```
+```{r child = if(top_level_knit) here('publications/pub1/paper/references.Rmd')}
+```

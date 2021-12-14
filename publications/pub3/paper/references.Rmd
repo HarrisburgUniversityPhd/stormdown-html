@@ -1,0 +1,14 @@
+---
+title: References
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include = F}
+here::i_am('publications/pub3/paper/references.Rmd')
+library(here)
+```
+
+## References {-}
+
+<div id="refs"></div>

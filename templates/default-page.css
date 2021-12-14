@@ -1,0 +1,51 @@
+/* page size */
+@page :blank {
+
+}
+
+/* Front cover */
+.front-cover {
+  break-after: recto;
+}
+
+
+/* last page or back cover */
+.back-cover {
+  break-before: verso;
+}
+.pagedjs_page:nth-last-of-type(1) {
+  background-image: var(--back-cover);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* page breaks; aka CSS fragmentation */
+.level1 {
+  break-before: recto;
+  page: chapter;
+}
+.front-matter-container .level1 {
+  page: frontmatter;
+}
+.section > h1, .section > h2, .section > h3, .section > h4, .section > h5, .section > h6 {
+  break-after: avoid;
+}
+.footenotes {
+  break-before: always;
+  break-after: always;
+}
+.figure {
+  break-inside: avoid;
+}
+
+/* reset page numbering for main content */
+.main .level1:first-child h1 {
+  counter-reset: page 1;
+}
+
+/* do not break captions */
+caption {
+  break-inside: avoid;
+  break-after: avoid;
+}

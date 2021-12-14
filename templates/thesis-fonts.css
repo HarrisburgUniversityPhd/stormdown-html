@@ -1,0 +1,16 @@
+@font-face {
+	font-family: "Computer Modern";
+	src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunrm.otf');
+}
+body {
+	font-family: "Computer Modern", serif;
+}
+blockquote {
+	font-family: "Computer Modern", serif;
+}
+code {
+	font-family: Consolas, Courier, monospace;
+}
+pre, code {
+	font-size: .95em;
+}

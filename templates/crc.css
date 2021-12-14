@@ -1,0 +1,69 @@
+/* chapter headers */
+.level1 > h1 {
+  font-size: 16pt;
+  font-weight: normal;
+  font-style: italic;
+  white-space: pre-line;
+  position: relative;
+  line-height: 28pt;
+  margin-bottom: 54pt;
+}
+
+.level1 > h1::after {
+  display: block;
+  content: " ";
+  width: 27mm;
+  height: 28pt;
+  position: absolute;
+  bottom: 0;
+  border-top: 4pt solid black;
+  border-bottom: 1pt solid black;
+}
+
+h1 > .header-section-number::after {
+  content: "\000A";
+}
+
+h1 > .header-section-number {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20pt;
+  width: 100%;
+  display: inline-block;
+  border-bottom: 1pt solid black;
+  line-height: 30pt;
+  position: relative;
+  top: -5pt;
+}
+
+
+
+.toc > h1::before, .unnumbered > h1::before {
+  display: block;
+  height: 32pt;
+  position: relative;
+  top: -5pt;
+  content: " ";
+}
+
+/* section headers */
+.level2 > h2 {
+  font-size: 10pt;
+  margin-top: 40pt;
+  padding-top: 16pt;
+  border-top: 1pt solid black;
+  position: relative;
+}
+
+
+.level2 > h2::after{
+  display: block;
+  content: " ";
+  width: 27mm;
+  height: 27pt;
+  position: absolute;
+  bottom: 0;
+  border-top: 4pt solid black;
+}
+
+
