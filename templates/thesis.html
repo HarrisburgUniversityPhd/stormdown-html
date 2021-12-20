@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"$if(lang)$ lang="$lang$" xml:lang="$lang$"$endif$>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width">
+<meta property="og:title" content="$pagetitle$" />
+$if(url)$<meta property="og:url" content="$url$" />$endif$
+$if(cover-image)$<meta property="og:image" content="$url$$cover-image$" />$endif$
+$if(description)$<meta property="og:description" content="$description$" />$endif$
+
+$for(author-meta)$
+<meta name="author" content="$author-meta$" />
+$endfor$
+
+$if(date-meta)$
+<meta name="date" content="$date-meta$" />
+$endif$
+
+<meta name="description" content="$if(description)$$description$$else$$pagetitle$$endif$">
+
+<script id="pandoc-meta" type="application/json">
+$meta-json$
+</script>
+
+<title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+
+$if(math)$
+$if(mathjax)$
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function() {
+  // Retrieve previous config object if defined
+  window.PagedConfig = window.PagedConfig || {};
+  let beforePaged = PagedConfig.before;
+  window.PagedConfig.before = async () => {
+    if (beforePaged) await beforePaged();
+    return new Promise((resolve, reject) => {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      var src = `$mathjaxurl$` + "?config=TeX-MML-AM_CHTML";
+      if (location.protocol !== "file:" && /^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+      script.src = src;
+      window.MathJax = {
+        AuthorInit: () => {
+          MathJax.Hub.Register.StartupHook("Begin", () => {
+            MathJax.Hub.Queue(resolve);
+          });
+        }
+      };
+      document.getElementsByTagName("head")[0].appendChild(script);
+    });
+  };
+})();
+</script>
+$endif$
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(highlightjs)$
+<link rel="stylesheet"
+      href="$highlightjs$/$if(highlightjs-theme)$$highlightjs-theme$$else$default$endif$.css"
+      $if(html5)$$else$type="text/css" $endif$/>
+<script src="$highlightjs$/highlight.js"></script>
+
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+$endif$
+
+$if(highlighting-css)$
+<style type="text/css">
+$highlighting-css$
+</style>
+$endif$
+
+$for(css)$
+<link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
+$endfor$
+
+</head>
+
+<body>
+
+<div class="front-page">
+	<div class="title-page">
+		<h1>$title$</h1>
+		$if(subtitle)$<h2>$subtitle$</h2>$endif$
+		</br/></br/>
+		<p>By</p>
+		<p>$author$</p>
+		</br/></br/>
+		<p>A thesis submitted to<br/>$university$<br/>for the degree of<br/>$degree$</p>
+		<br/>
+		<img src="templates/HU_Logo.png" width="270" height="92">
+		<br/>
+		<p>Department of $department$<br/>$university$<br/>$date.month$ $date.year$</p>
+	</div>
+
+	<div class="copyright">
+		<p>&copy; Copyright by $author$, $date.year$<br/>All Rights Reserved</p>
+	</div>
+</div>
+
+<div class="front-matter-container">
+
+	$if(abstract)$
+	<div class="abstract">
+		<h1 class="abstract">Abstract</h1>
+		$abstract$
+	</div>
+	$endif$
+
+	$if(dedication)$
+	<div class="dedication">
+		<h1 class="dedication">Dedication</h1>
+		<p class="dedication">$dedication$</p>
+	</div>
+	$endif$
+
+	<div class="signpage">
+		<h1 class="approval">Ph.D. COMMITTEE APPROVAL</h1>
+		<p>To the Faculty of $university$:</p>
+		<p>The members of the Committee appointed to examine the dissertation of $author$ find it satisfactory and recommend that it be accepted.</p>
+		<br/><br/>
+		$for(committee)$
+		<br/><br/>
+		<div class="signature">$committee.name$, $committee.title$$if(committee.position)$, $committee.position$$endif$ </div>
+		$endfor$
+	</div>
+
+	<div class="signpage">
+	<h1 class="acceptance">ACCEPTANCE PAGE</h1>
+	<p>As a duly authorised representative of $university$, I have read the thesis of $author$ in its final form and have found that (1) its format, citations, and bibliographical style are consistent and acceptable and fulfill university and department style requirements; (2) its illustrative materials including figures, tables, and charts are in place; and (3) the final manuscript is satisfactory to the graduate committee and is ready for submission to the university library.</p>
+	<br/><br/>
+	$for(acceptance)$
+	<br/><br/>
+	<div class="signature">$acceptance.name$, $acceptance.title$<br/>$acceptance.position$<br/>$university$</div>
+	$endfor$
+	</div>
+
+	$if(acknowledgements)$
+	<div class="acknowledgements">
+	<h1 class="acknowledgements">Acknowledgements</h1>
+	$acknowledgements$
+	</div>
+	$endif$
+
+
+	$if(toc)$
+	<div id="$idprefix$TOC" class="level1 toc front-matter">
+		<h1 class="toc-title">Table of Contents</h1>
+		$table-of-contents$
+	</div>
+	$endif$
+
+</div>
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+<script>
+// when the page is about to reload via servr, remember the scroll position
+document.addEventListener('servr:reload', function(e) {
+  sessionStorage.setItem('pagedown-scroll', window.scrollY);
+});
+</script>
+</body>
+</html>
