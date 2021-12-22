@@ -9,7 +9,10 @@ here::i_am('dissertation/general-overview.Rmd')
 library(here)
 ```
 
-### Setting the Stage
+# General Overview
+
+At this point you have already written at least three different literature reviews.
+This chapter explains why your portfolio should be considered as a _single_ work, not several different works stapled together.
 
 Lorem ipsum dolor sit amet, his ornatus disputando ut.
 Reprimique adversarium in vix, labore virtute nominati pro eu.
