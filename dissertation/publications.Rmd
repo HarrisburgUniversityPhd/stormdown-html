@@ -10,6 +10,9 @@ library(here)
 top_level_knit = F
 ```
 
+**NOTE**: The chapters in your publications are _sub-chapters_ in your dissertation.
+This means you need to add a $2^{nd}$ `#` in front of your headings in those files.
+
 # My 1st Publication {#pub1}
 
 Originally titled: My 1st Publication

@@ -7,9 +7,40 @@ editor_options:
 ```{r include = F}
 here::i_am('publications/pub2/paper/results.Rmd')
 library(here)
+library(knitr)
+library(ggplot2)
 ```
 
 ## Results
+
+Lorem ipsum dolor sit amet, his ornatus disputando ut.
+Reprimique adversarium in vix, labore virtute nominati pro eu.
+Per ea sonet omnium, cu torquatos repudiandae vim. Dolor quaerendum an mei.
+Libris singulis posidonium has eu, usu et sale urbanitas efficiantur, mea eu eros delectus.
+
+Data from [@ds-opioid].
+
+Reference to Figure \@ref(fig:pub2-pre-rendered).
+
+Reference to Figure \@ref(fig:pub2-live).
+
+```{r label = 'pub2-pre-rendered', echo = F, fig.cap = 'Opioid Overdoses by Gender (Rendered)'}
+fig <- here('publications/pub2/results/fig1.jpg')
+include_graphics(fig)
+```
+
+```{r label = 'pub2-live', echo = F, fig.cap = 'Opioid Overdoses by Gender (Live)'}
+tab <- read.csv(
+  here('publications/pub2/results/table1.csv'),
+  header = T,
+  stringsAsFactors = F)
+ggplot(tab, aes(x = Gender, y = Freq, fill = Survive)) + 
+  geom_bar(stat = 'identity', position = 'dodge') +
+  theme_bw() +
+  labs(x = 'Gender', y = 'Count') + 
+  ggtitle('Opioid Overdoses by Gender', subtitle = 'in Pennsylvania')
+```
+
 
 Lorem ipsum dolor sit amet, his ornatus disputando ut.
 Reprimique adversarium in vix, labore virtute nominati pro eu.

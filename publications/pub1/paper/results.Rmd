@@ -7,9 +7,28 @@ editor_options:
 ```{r include = F}
 here::i_am('publications/pub1/paper/results.Rmd')
 library(here)
+library(knitr)
 ```
 
 ## Results
+
+Lorem ipsum dolor sit amet, his ornatus disputando ut.
+Reprimique adversarium in vix, labore virtute nominati pro eu.
+Per ea sonet omnium, cu torquatos repudiandae vim. Dolor quaerendum an mei.
+Libris singulis posidonium has eu, usu et sale urbanitas efficiantur, mea eu eros delectus.
+
+Data from [@ds-opioid].
+
+Reference to Table \@ref(tab:pub1-table1)
+
+```{r label = 'pub1-table1', echo = F}
+tab <- read.csv(
+  here('publications/pub1/results/table1.csv'),
+  header = T,
+  stringsAsFactors = F)
+
+kable(tab, caption = 'Overdoses in PA by Gender', format = 'pipe')
+```
 
 Lorem ipsum dolor sit amet, his ornatus disputando ut.
 Reprimique adversarium in vix, labore virtute nominati pro eu.

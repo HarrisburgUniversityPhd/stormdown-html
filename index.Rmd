@@ -61,8 +61,8 @@ link-citations: true
 links-to-footnotes: true
 paged-footnotes: true
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa-6th-edition.csl
-url: 'https\://github.com/HarrisburgUniversityPhd/stormdown-lite'
-github-repo: HarrisburgUniversityPhd/stormdown-lite
+url: 'https\://github.com/HarrisburgUniversityPhd/stormdown-html'
+github-repo: HarrisburgUniversityPhd/stormdown-html
 editor_options:
   chunk_output_type: console
 ---
