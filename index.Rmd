@@ -78,9 +78,7 @@ source(here('scripts/install_packages.R'))
 ```
 ```{r child = here('dissertation/general-overview.Rmd')}
 ```
-```{r child = here('dissertation/research-umbrella.Rmd')}
-```
-```{r child = here('dissertation/prior-art.Rmd')}
+```{r child = here('dissertation/research-status.Rmd')}
 ```
 ```{r child = here('dissertation/publications.Rmd')}
 ```
