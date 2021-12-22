@@ -1,0 +1,28 @@
+---
+title: Research Umbrella
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include = F}
+here::i_am('dissertation/research-status.Rmd')
+library(here)
+```
+
+# Research Status
+
+This chapter details where you are going to publish your portfolio works.
+You need the working name, targeted publisher, current status, and timeline.
+
+This chapter will be very short and only needed as part of your proposal.
+
+The following sections detail the targeted publications.
+
+1. "My 1st Publication", Chapter \@ref(pub1)
+2. "My 2nd Publication", Chapter \@ref(pub2)
+3. "My 3rd Publication", Chapter \@ref(pub3)
+
+Chapter \@ref(pub1) will be submitted to the [Data](https://www.mdpi.com/journal/data) for consideration in their January Issue.
+Chapter \@ref(pub2) will be submitted to the [Data](https://www.mdpi.com/journal/data) for consideration in their January Issue.
+Chapter \@ref(pub3) will be submitted to the [Data](https://www.mdpi.com/journal/data) for consideration in their January Issue.
+
