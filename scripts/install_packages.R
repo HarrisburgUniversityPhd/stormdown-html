@@ -2,7 +2,7 @@
 ipkgs <- installed.packages()
 
 # tables
-pkgs_table <- c('knitr')
+pkgs_table <- c('knitr', 'kableExtra')
 # figures
 pkgs_figure <- c('knitr')
 # flowcharts

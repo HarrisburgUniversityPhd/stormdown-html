@@ -464,3 +464,11 @@ code {
     width: calc(var(--pagedjs-width) + 2 * var(--screen-pages-spacing));
   }
 }
+/* kableExtra::kable_styling, see https://github.com/rstudio/pagedown/issues/191 */
+table {
+  width: 100%;
+}
+div.table-norow > table {  
+  border-top: 0px;
+  border-bottom: 0px;
+}

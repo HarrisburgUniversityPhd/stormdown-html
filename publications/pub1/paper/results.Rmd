@@ -8,6 +8,7 @@ editor_options:
 here::i_am('publications/pub1/paper/results.Rmd')
 library(here)
 library(knitr)
+library(kableExtra)
 ```
 
 ## Results
@@ -19,15 +20,39 @@ Libris singulis posidonium has eu, usu et sale urbanitas efficiantur, mea eu ero
 
 Data from [@ds-opioid].
 
-Reference to Table \@ref(tab:pub1-table1)
+References to Table \@ref(tab:pub1-table1-hard), Table \@ref(tab:pub1-table1-csv), and Table \@ref(tab:pub1-table1-extra)
 
-```{r label = 'pub1-table1', echo = F}
+Table: (\#tab:pub1-table1-hard)Overdoses in PA by Gender (Hard Coded)
+
+|Gender |Administered |Survive | Freq|
+|:------|:------------|:-------|----:|
+|Female |N            |N       |  734|
+|Female |N            |Y       | 1450|
+|Female |Y            |N       |  253|
+|Female |Y            |Y       | 3433|
+|Male   |N            |N       | 1800|
+|Male   |N            |Y       | 2492|
+|Male   |Y            |N       |  606|
+|Male   |Y            |Y       | 8106|
+
+\newpage
+
+```{r label = 'pub1-table1-csv', echo = F}
 tab <- read.csv(
   here('publications/pub1/results/table1.csv'),
   header = T,
   stringsAsFactors = F)
 
-kable(tab, caption = 'Overdoses in PA by Gender', format = 'pipe')
+kable(tab, caption = 'Overdoses in PA by Gender (CSV)', format = 'pipe')
+```
+
+`kableExtra` has a [known interaction](https://github.com/rstudio/pagedown/issues/191) with `pagedown`.
+Use `add_lot_link()` to bypass the issue until the devs fix it.
+
+```{r label = 'pub1-table1-extra', echo = F}
+add_lot_link('Overdoses in PA by Gender (Extra)')
+t1 <- kable(tab, format = 'html')
+kable_styling(t1)
 ```
 
 Lorem ipsum dolor sit amet, his ornatus disputando ut.
