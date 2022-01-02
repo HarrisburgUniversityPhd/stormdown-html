@@ -10,5 +10,5 @@ editor_options:
 
 ---
 nocite: | 
-  @stormdown2020
+  @stormdown2020, @apa6thcsl
 ---

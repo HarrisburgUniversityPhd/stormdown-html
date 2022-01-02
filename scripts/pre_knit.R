@@ -1,4 +1,4 @@
-here::i_am('scripts/knit_dissertation.R')
+here::i_am('scripts/pre_knit.R')
 library(here)
 options(encoding = "UTF-8")
 
