@@ -30,6 +30,7 @@ acceptance:
   - name: Bilita Mattes
     title: D.Ed.
     position: Provost
+preknit: "`r source('scripts/pre_knit.R')`"
 abstract: |
   `r paste(readLines('dissertation/abstract.Rmd'), collapse = '\n  ')`
 dedication: |
@@ -66,13 +67,6 @@ github-repo: HarrisburgUniversityPhd/stormdown-html
 editor_options:
   chunk_output_type: console
 ---
-
-```{r include = F}
-here::i_am('index.Rmd')
-library(here)
-
-source(here('scripts/install_packages.R'))
-```
 
 ```{r child = here('dissertation/introduction.Rmd')}
 ```
