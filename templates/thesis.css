@@ -208,8 +208,11 @@ h2.author {
   font-weight: normal;
 }
 .dedication,.abstract, .acknowledgements {
-  text-align: left;
+  text-align: justify;
   line-height: 100%;
+}
+div [data-page ~= chapter] > p, div [data-page ~= chapter] > div.section > p {
+  text-align: justify;
 }
 div.abstract > h1 {
   text-align: center;
@@ -217,12 +220,11 @@ div.abstract > h1 {
 div.dedication > h1 {
   text-align: center;
 }
-div.dedication > p {
-  text-align: center;
-  text-indent: 0px;
-}
 div.signpage > h1 {
   text-align: center;
+}
+div.signpage > h1 + p {
+  text-align: justify;
 }
 div.acknowledgements > h1 {
   text-align: center;
