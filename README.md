@@ -14,7 +14,7 @@ Open RStudio and run the following command:
 ```{r}
 install.packages(c('pagedown', 'here'))
 ```
-## Linux
+## Linux/Chromebook
 
 If you are trying to install `stormdown` in Ubuntu environment, you might be missing the following libraries:
 
