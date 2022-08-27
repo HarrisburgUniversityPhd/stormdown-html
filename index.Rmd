@@ -42,12 +42,12 @@ bibliography:
   - publications/pub1/paper/references.bib
   - publications/pub2/paper/references.bib
   - publications/pub3/paper/references.bib
-toc-depth: 2
 lof: true
 lot: true
 output:
   pagedown::html_paged:
     toc: true
+    toc_depth: 1
     number_sections: true
     pandoc_args: --mathjax
     self_contained: true
