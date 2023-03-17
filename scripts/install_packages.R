@@ -11,7 +11,7 @@ pkgs_chart <- c('knitr', 'DiagrammeR', 'DiagrammeRsvg', 'rsvg')
 install_needed <- function(pkgs) {
   for(pkg in pkgs) {
     if (!(pkg %in% ipkgs)) {
-      install.packages(pkg)
+      install.packages(pkg, repos='http://cran.us.r-project.org'))
     }
   }
 }
