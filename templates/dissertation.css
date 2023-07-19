@@ -1,15 +1,138 @@
-/* start - default-page.css */
+/*
+	This template was modified by Brent Thorne from the 'default-page.css, and default.css' files.
+	Please see the wonderful work done by Yihui Xhe and Romain Lesaur on that package at 
+	https://github.com/rstudio/pagedown
+	Addtionally modified by @markanewman to meet the needs of HU.
+*/
 
 /* page size */
 @page :blank {
 
+}
+/* page size */
+@page {
+  size: A4;
+  margin: 1in, 1in, 1in, 1.5in;
+} /* var(--pagedjs-width) doesn't work in browser when printing */
+@page chapter:left {
+  @top-left {
+    content: none;
+  }
+  @top-right {
+    content: none;
+    white-space: nowrap !important;
+  }
+  @bottom-right {
+    content: counter(page);
+    }
+}
+@page chapter:right {
+  @top-right {
+    content: none;
+  }
+  @top-left {
+    content: none;
+    white-space: nowrap !important;
+  }
+  @bottom-right {
+    content: counter(page);
+  }
+}
+/* New chapter page */
+@page chapter:first {
+  @top-left {
+    content: none;
+  }
+  @top-right {
+    content: none;
+  }
+  @bottom-right {
+    content: counter(page);
+  }
+}
+@page :first {
+  @top-left {
+    content: none;
+  }
+  @top-right {
+    content: none;
+  }
+  @bottom-right {
+    content: none !important;
+  }
+}
+/* Front matter*/
+@page frontmatter:left {
+  @top-left {
+    content: counter(page, lower-roman);
+  }
+  @top-right {
+    content: element(runningH1Title);
+    white-space: nowrap !important;
+  }
+}
+@page frontmatter:right {
+  @top-right {
+    content: counter(page, lower-roman);
+  }
+  @top-left {
+    content: element(runningH1Title);
+    white-space: nowrap !important;
+  }
+}
+@page frontmatter:first {
+  @top-left {
+    content: none;
+  }
+  @top-right {
+    content: none;
+  }
+  @bottom-right {
+    content: counter(page, lower-roman);
+  }
+}
+
+/* two pages in a row if possible on screen */
+@media screen {
+  body {
+    background-color: var(--background);
+    margin: var(--screen-pages-spacing) auto 0 auto;
+  }
+  .pagedjs_pages {
+    display: flex;
+    max-width: calc(var(--pagedjs-width) * 2);
+    flex: 0;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  .pagedjs_page {
+    background: var(--color-paper);
+    box-shadow: 0 0 0 1px var(--color-mbox);
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin: auto auto var(--screen-pages-spacing) auto;
+  }
+}
+/* when a row can hold two pages, start first page on the right */
+@media screen and (min-width: 12.32in) {
+  .pagedjs_page {
+    margin: auto 0 var(--screen-pages-spacing) 0;
+  }
+  .pagedjs_first_page {
+    margin-left: var(--pagedjs-width);
+  }
+}
+/* use a fixed width body for mobiles */
+@media screen and (max-width:1180px)  {
+  body {
+    width: calc(var(--pagedjs-width) + 2 * var(--screen-pages-spacing));
+  }
 }
 
 /* Front cover */
 .front-cover {
   break-after: recto;
 }
-
 
 /* last page or back cover */
 .back-cover {
@@ -51,10 +174,6 @@ caption {
   break-inside: avoid;
   break-after: avoid;
 }
-
-/* end - default-page.css */
-
-/* start - default.css */
 
 :root {
   --background: whitesmoke;
@@ -123,6 +242,15 @@ a[href^="http"]:not([class="uri"])::after {
   content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
 }
 
+/* Use empty space for sections that are of
+class chapter and chapter-ref*/
+.toc .chapter-ref .leaders::before {
+  float: left;
+  width: 0;
+  white-space: nowrap;
+  content: "                                                                                                                                                                                ";
+}
+
 /* Chapter name */
 .chapter > h1 > .header-section-number::before, .chapter-ref > .toc-section-number::before {
   content: var(--chapter-name-before, "Chapter ");
@@ -157,14 +285,31 @@ pre.numberSource {
 }
 table {
   margin: auto;
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #666;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-collapse:collapse;
+  font-size: 9pt;
+  line-height: 115%;
 }
 table thead th {
   border-bottom: 1px solid #ddd;
 }
 thead, tfoot, tr:nth-child(even) {
   background: #eee;
+}
+
+table th {
+  border-bottom: 1px solid #000;
+}
+th {
+  padding: 0.1cm;
+}
+thead {
+  border-bottom: 1px solid #000;
+  line-height: 140%;
+}
+table > caption {
+  margin-bottom: 0.3cm;
 }
 /* knitr::kables styling, see https://github.com/rstudio/pagedown/issues/214 */
 .kable_wrapper > tbody > tr > td {
@@ -179,10 +324,9 @@ thead, tfoot, tr:nth-child(even) {
 .footnotes hr {
   border: none;
 }
-
-/* end - default.css */
-
-/* start - crc.css */
+.footnote-break {
+  width: 1in;
+}
 
 /* chapter headers */
 .level1 > h1 {
@@ -252,11 +396,6 @@ h1 > .header-section-number {
   border-top: 4pt solid black;
 }
 
-/* end - crc.css */
-
-
-/* start - thesis-fonts.css */
-
 @font-face {
 	font-family: "Computer Modern";
 	src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunrm.otf');
@@ -269,21 +408,15 @@ blockquote {
 }
 code {
 	font-family: Consolas, Courier, monospace;
+	font-size: 9pt;
+	line-height: 110%;
+	hyphens: none;
 }
 pre, code {
 	font-size: .95em;
 }
 
-/* end - thesis-fonts.css */
 
-/* start - thesis.css */
-/* This template was modified by Brent Thorne from the 'default-page.css, and default.css' file please see the wonderful work done by Yihui Xhe and Romain Lesaur on that package at https://github.com/rstudio/pagedown */
-
-/* page size */
-@page {
-  size: A4;
-  margin: 1in, 1in, 1in, 1.5in;
-} /* var(--pagedjs-width) doesn't work in browser when printing */
 
 /* store some string variables */
 .shorttitle1 {
@@ -305,18 +438,7 @@ pre, code {
   content: string(h1-text);
 }
 
-@page chapter:left {
-  @top-left {
-    content: none;
-  }
-  @top-right {
-    content: none;
-    white-space: nowrap !important;
-  }
-  @bottom-right {
-    content: counter(page);
-    }
-}
+
 
 /* right page */
 .running-h2-title {
@@ -331,73 +453,7 @@ pre, code {
 /* However, this is yet unsupported by Paged.js, see https://gitlab.pagedmedia.org/tools/pagedjs/issues/38 */
   content: string(h2-text);
 }
-@page chapter:right {
-  @top-right {
-    content: none;
-  }
-  @top-left {
-    content: none;
-    white-space: nowrap !important;
-  }
-  @bottom-right {
-    content: counter(page);
-  }
-}
 
-/* New chapter page */
-@page chapter:first {
-  @top-left {
-    content: none;
-  }
-  @top-right {
-    content: none;
-  }
-  @bottom-right {
-    content: counter(page);
-  }
-}
-@page :first {
-  @top-left {
-    content: none;
-  }
-  @top-right {
-    content: none;
-  }
-  @bottom-right {
-    content: none !important;
-  }
-}
-
-/* Front matter*/
-@page frontmatter:left {
-  @top-left {
-    content: counter(page, lower-roman);
-  }
-  @top-right {
-    content: element(runningH1Title);
-    white-space: nowrap !important;
-  }
-}
-@page frontmatter:right {
-  @top-right {
-    content: counter(page, lower-roman);
-  }
-  @top-left {
-    content: element(runningH1Title);
-    white-space: nowrap !important;
-  }
-}
-@page frontmatter:first {
-  @top-left {
-    content: none;
-  }
-  @top-right {
-    content: none;
-  }
-  @bottom-right {
-    content: counter(page, lower-roman);
-  }
-}
 /* page breaks; aka CSS fragmentation */
 .level1 {
   page: chapter;
@@ -513,6 +569,7 @@ body {
   font-family: "Computer Modern", serif;
   font-size: 11pt;
   line-height: 200%;
+  hyphens: auto;
 }
 TOC {
   line-height: 50%;
@@ -543,10 +600,6 @@ h3 {
 }
 span.citation {
 }
-code {
-  font-size: 9pt;
-  line-height: 110%;
-}
 .signature {
   border: 0;
   border-top: 1px solid #000;
@@ -560,12 +613,6 @@ code {
 }
 p {
   line-height: 200%;
-}
-.chapter > h1 > .header-section-number::before, .chapter-ref > .toc-section-number::before {
-  content: var(--chapter-name-before, "Chapter ");
-}
-.chapter > h1 > .header-section-number::after, .chapter-ref > .toc-section-number::after {
-  content: var(--chapter-name-after, "");
 }
 .chapter-ref {
   font-weight: bold;
@@ -608,44 +655,6 @@ a[href^="http"]:not([class="uri"])::after {
   text-indent: -2em;
   text-align: justify;
 }
-/* TOC, LOT, LOF */
-.toc ul, .lot ul, .lof ul {
-  list-style: none;
-  padding-left: 0;
-  overflow-x: hidden;
-}
-.toc li li {
-  padding-left: 1em;
-}
-.toc a, .lot a, .lof a {
-  text-decoration: none;
-  background: white;
-  padding-right: .33em;
-}
-.toc a::after, .lot a::after, .lof a::after {
-  /* content: leader(dotted) target-counter(attr(href), page); */
-  content: target-counter(attr(href), page);
-  float: right;
-  background: white;
-}
-.toc a.front-matter-ref::after, .lot a.front-matter-ref::after, .lof a.front-matter-ref::after {
-  /* content: leader(dotted) target-counter(attr(href), page, lower-roman); */
-  content: target-counter(attr(href), page, lower-roman);
-}
-.toc .leaders::before, .lot .leaders::before, .lof .leaders::before {
-  float: left;
-  width: 0;
-  white-space: nowrap;
-  content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
-}
-/* Use empty space for sections that are of
-class chapter and chapter-ref*/
-.toc .chapter-ref .leaders::before {
-  float: left;
-  width: 0;
-  white-space: nowrap;
-  content: "                                                                                                                                                                                ";
-}
 
 
 /* misc elements */
@@ -661,90 +670,10 @@ pre {
 pre[class] {
   background: #f9f9f9;
 }
-table {
-  margin: auto;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
-  border-collapse:collapse;
-  font-size: 9pt;
-  line-height: 115%;
-}
-table th {
-  border-bottom: 1px solid #000;
-}
-th {
-  padding: 0.1cm;
-}
-thead {
-  border-bottom: 1px solid #000;
-  line-height: 140%;
-}
-table > caption {
-  margin-bottom: 0.3cm;
-}
-/* knitr::kables styling, see https://github.com/rstudio/pagedown/issues/214 */
-.kable_wrapper > tbody > tr > td {
-    vertical-align: top;
-}
-.footnotes {
-  font-size: 90%;
-}
-.footnotes hr::before {
-  content: "Footnotes:";
-}
-.footnotes hr {
-  border: none;
-}
-.footnote-break {
-  width: 1in;
-}
-body {
-  hyphens: auto;
-}
-code {
-  hyphens: none;
-}
 .sourceCode {
   line-height: 1;
 }
-/* two pages in a row if possible on screen */
-@media screen {
-  body {
-    background-color: var(--background);
-    margin: var(--screen-pages-spacing) auto 0 auto;
-  }
-  .pagedjs_pages {
-    display: flex;
-    max-width: calc(var(--pagedjs-width) * 2);
-    flex: 0;
-    flex-wrap: wrap;
-    margin: 0 auto;
-  }
-  .pagedjs_page {
-    background: var(--color-paper);
-    box-shadow: 0 0 0 1px var(--color-mbox);
-    flex-shrink: 0;
-    flex-grow: 0;
-    margin: auto auto var(--screen-pages-spacing) auto;
-  }
-}
 
-/* when a row can hold two pages, start first page on the right */
-@media screen and (min-width: 12.32in) {
-  .pagedjs_page {
-    margin: auto 0 var(--screen-pages-spacing) 0;
-  }
-  .pagedjs_first_page {
-    margin-left: var(--pagedjs-width);
-  }
-}
-
-/* use a fixed width body for mobiles */
-@media screen and (max-width:1180px)  {
-  body {
-    width: calc(var(--pagedjs-width) + 2 * var(--screen-pages-spacing));
-  }
-}
 /* kableExtra::kable_styling, see https://github.com/rstudio/pagedown/issues/191 */
 table {
   width: 100%;
@@ -753,6 +682,3 @@ div.table-norow > table {
   border-top: 0px;
   border-bottom: 0px;
 }
-
-/* end - thesis.css */
-
