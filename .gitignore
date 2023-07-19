@@ -3,6 +3,6 @@
 .RData
 
 #Knit
-_book
 *.html
 *.tmp.png
+!templates/dissertation.html

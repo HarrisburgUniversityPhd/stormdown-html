@@ -48,13 +48,13 @@ output:
     number_sections: true
     pandoc_args: --mathjax
     self_contained: true
-    template: templates/thesis.html
+    template: templates/dissertation.html
     css:
       - templates/default-page.css
       - templates/default.css
       - templates/crc.css
-      - templates/thesis-fonts.css
-      - templates/thesis.css
+      - templates/dissertation-fonts.css
+      - templates/dissertation.css
 link-citations: true
 links-to-footnotes: true
 paged-footnotes: true
