@@ -30,13 +30,10 @@ acceptance:
   - name: Bilita Mattes
     title: D.Ed.
     position: Provost
-preknit: "`r source('scripts/pre_knit.R')`"
-abstract: |
-  `r paste(readLines('dissertation/abstract.Rmd'), collapse = '\n  ')`
-dedication: |
-  `r paste(readLines('dissertation/dedication.Rmd'), collapse = '\n  ')`
-acknowledgements: |
-  `r paste(readLines('dissertation/acknowledgements.Rmd'), collapse = '\n  ')`
+front_matter: "`r source('scripts/render_front_matter.R')`"
+abstract: "`r render_front_matter('dissertation/abstract.Rmd')`"
+dedication: "`r render_front_matter('dissertation/dedication.Rmd')`"
+acknowledgements: "`r render_front_matter('dissertation/acknowledgements.Rmd')`"
 bibliography:
   - dissertation/references.bib
   - publications/pub1/paper/references.bib

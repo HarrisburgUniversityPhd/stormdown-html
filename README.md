@@ -12,7 +12,7 @@ If you want the LaTeX version, that can be found [here](https://github.com/Harri
 Open RStudio and run the following command:
 
 ```{r}
-install.packages(c('pagedown', 'here'))
+install.packages(c('pagedown', 'here', 'knitr', 'kableExtra', 'DiagrammeR', 'DiagrammeRsvg', 'rsvg'))
 ```
 ## Linux/Chrome
 
