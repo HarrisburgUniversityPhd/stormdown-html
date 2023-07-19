@@ -44,7 +44,7 @@ lot: true
 output:
   pagedown::html_paged:
     toc: true
-    toc_depth: 1
+    toc_depth: 2
     number_sections: true
     pandoc_args: --mathjax
     self_contained: true
