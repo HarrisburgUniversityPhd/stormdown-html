@@ -49,12 +49,7 @@ output:
     pandoc_args: --mathjax
     self_contained: true
     template: templates/dissertation.html
-    css:
-      - templates/default-page.css
-      - templates/default.css
-      - templates/crc.css
-      - templates/dissertation-fonts.css
-      - templates/dissertation.css
+    css: templates/dissertation.css
 link-citations: true
 links-to-footnotes: true
 paged-footnotes: true
@@ -64,6 +59,13 @@ github-repo: HarrisburgUniversityPhd/stormdown-html
 editor_options:
   chunk_output_type: console
 ---
+
+```{r echo = F, message = F}
+here::i_am('index.Rmd')
+library(here)
+source(here('scripts/add_lot_link.R'))
+source(here('scripts/knit_grViz.R'))
+```
 
 ```{r child = here('dissertation/introduction.Rmd')}
 ```
